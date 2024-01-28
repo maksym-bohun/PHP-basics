@@ -1,59 +1,66 @@
 <?php
 $output = null;
-$string = 'Hello world';
 
-// strlen
-$output = strlen($string);
+// Get year
+$output = date('Y');
 
-// str_word_count
-$output = str_word_count($string);
+// Get year with timestamp
+$output = date('Y', 936354600);
 
-// strpos
-$output = strpos($string,'world');
+// Get year with date string
+$output = date('Y', strtotime('1991-09-01'));
 
-// get char by index
-$output = $string[1];
+// Get month
+$output = date('m');
 
-// substr
-$output = substr($string, 6, 3);
+// Get day
+$output = date('D');
+$output = date('l');
 
-// str_replace
-$output = str_replace('world', 'Universe', $string);
+// Get date
+$output = date('d');
 
-// strtolower
-$output = strtolower($string);
+// Get year, month and day
+$output = date('Y-m-d');
 
-// strtoupper
-$output = strtoupper($string);
+// Get hour
+$output = date('h');
 
-//ucwords
-$output = ucwords($string);
+// Get min
+$output = date('i');
 
-//trim
-$output = trim('    Hello world')
+// Get sec
+$output = date('s');
+
+// Get am/pm
+$output = date('a');
+
+// Get time
+$output = date('Y-m-d h:i:s a')
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>PHP From Scratch</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>PHP From Scratch</title>
 </head>
 
 <body class="bg-gray-100">
-  <header class="bg-blue-500 text-white p-4">
-    <div class="container mx-auto">
-      <h1 class="text-3xl font-semibold">PHP From Scratch</h1>
+    <header class="bg-blue-500 text-white p-4">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-semibold">PHP From Scratch</h1>
+        </div>
+    </header>
+    <div class="container mx-auto p-4 mt-4">
+        <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+            <!-- Output -->
+            <p class="text-xl"><?php echo $output; ?></p>
+        </div>
     </div>
-  </header>
-  <div class="container mx-auto p-4 mt-4">
-    <div class="bg-white rounded-lg shadow-md p-6 mt-6">
-      <p class="text-xl"><?= $output ?></p>
-    </div>
-  </div>
 </body>
 
 </html>
