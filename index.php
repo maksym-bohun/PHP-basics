@@ -1,47 +1,31 @@
 <?php
+    $firstName = 'John';
+    $lastName = 'Diaz';
+    $fullName = $firstName . ' ' .  $lastName;
 
+?>
 
-// String
-$name = 'Maks Bohun';
+<!DOCTYPE html>
+<html lang="en">
 
-var_dump($name);
-echo '<br/>';
-echo getType($name);
-echo '<br/>';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Learn PHP From Scratch</title>
+</head>
 
-// Integers
-$age = 19;
-var_dump($age);
-echo '<br/>';
+<body class="bg-gray-100">
+    <header class="bg-blue-500 text-white p-4">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-semibold">Learn PHP From Scratch</h1>
+        </div>
+    </header>
+    <div class="container mx-auto p-4 mt-4">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4"><?= 'Hello, my name is ' . $fullName . '<br/>' ?></h2>
+            <h2 class="text-2xl font-semibold mb-4"><?= "Hello, my name is $fullName </br>" ?></h2>
+    </div>
+</body>
 
-// Float
-$rating = 4.5;
-var_dump($rating);
-echo '<br/>';
-
-// Boolean
-$isLoaded = true;
-var_dump($isLoaded);
-echo '<br/>';
-
-//Array
-$arr = ['Josn', 1, true];
-var_dump($arr);
-echo '<br/>';
-
-// Object
-$person = new stdClass();
-var_dump($person);
-echo '<br/>';
-
-// Null
-$car = null;
-var_dump($car);
-echo '<br/>';
-
-
-// Resource
-$file = fopen('sample.txt', 'r');
-var_dump($file);
-echo '<br/>';
-
+</html>
