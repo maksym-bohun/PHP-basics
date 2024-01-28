@@ -1,61 +1,38 @@
 <?php
-/*
-| Arithmetic Operators
-| Operator | Description    |
-| -------- | -------------- |
-| `+`      | Addition       |
-| `-`      | Subtraction    |
-| `*`      | Multiplication |
-| `/`      | Division       |
-| `%`      | Modulus        |
-*/
-
-
 $output = null;
+$string = 'Hello world';
 
-$num1 = 20;
-$num2 = 10;
+// strlen
+$output = strlen($string);
 
-$output = "$num1 + $num2 = " . $num1 + $num2;
-$output = "$num1 - $num2 = " . $num1 - $num2;
-$output = "$num1 * $num2 = " . $num1 * $num2;
-$output = "$num1 / $num2 = " . $num1 / $num2;
+// str_word_count
+$output = str_word_count($string);
 
+// strpos
+$output = strpos($string,'world');
 
-// Assignment operator
-$num3 = 10;
-$num3 += 20;
+// get char by index
+$output = $string[1];
 
-$output = $num3;
+// substr
+$output = substr($string, 6, 3);
 
-// Built-in PHP functions
-// rand()
-$output = rand();
-$output = getrandmax();
-$output = rand(1, 100);
+// str_replace
+$output = str_replace('world', 'Universe', $string);
 
-//round()
-$output = round(0.47, 1);
+// strtolower
+$output = strtolower($string);
 
-// ceil()
-$output = ceil(4.3);
+// strtoupper
+$output = strtoupper($string);
 
-// floor()
-$output = floor(4.3);
+//ucwords
+$output = ucwords($string);
 
-// abs()
-$output = abs(-2.4);
-
-// max()
-$output = max(1,2,40,23,40.001);
-$output = max([1,2,40,23,40.001]);
-
-// min()
-$output = min([1,2,40,23,40.001]);
-
-$output = number_format(123456789.19234, 2, '.', ',')
-
+//trim
+$output = trim('    Hello world')
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,10 +51,7 @@ $output = number_format(123456789.19234, 2, '.', ',')
   </header>
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-white rounded-lg shadow-md p-6 mt-6">
-      <!-- Output -->
-      <p class="text-xl">
-        <?= $output ?>
-      </p>
+      <p class="text-xl"><?= $output ?></p>
     </div>
   </div>
 </body>
