@@ -1,43 +1,47 @@
 <?php
-    // tags, printing, comments
 
-    /*
-    echo 'Hello From PHP';
-    print '<br/>';
-    print 'Hello from print';
-    echo '<br/>','Value 1  ', 'Value 2';
-    */
 
-    // Variables
+// String
+$name = 'Maks Bohun';
 
-    $title = 'Learn PHP from Scratch';
-    $heading = 'Welcome to the course!';
-    $body = 'In this course, you will learn the fundamentals of the PHP language';
-?>
+var_dump($name);
+echo '<br/>';
+echo getType($name);
+echo '<br/>';
 
-<!DOCTYPE html>
-<html lang="en">
+// Integers
+$age = 19;
+var_dump($age);
+echo '<br/>';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title><?=  $title?>
-</title>
-</head>
+// Float
+$rating = 4.5;
+var_dump($rating);
+echo '<br/>';
 
-<body class="bg-gray-100">
-    <header class="bg-blue-500 text-white p-4">
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-semibold"><?= $title ?></h1>
-        </div>
-    </header>
-    <div class="container mx-auto p-4 mt-4">
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-2xl font-semibold mb-4"><?= $heading ?></</h2>
-          <p><?= $body ?></p>
-        </div>
-    </div>
-</body>
+// Boolean
+$isLoaded = true;
+var_dump($isLoaded);
+echo '<br/>';
 
-</html>
+//Array
+$arr = ['Josn', 1, true];
+var_dump($arr);
+echo '<br/>';
+
+// Object
+$person = new stdClass();
+var_dump($person);
+echo '<br/>';
+
+// Null
+$car = null;
+var_dump($car);
+echo '<br/>';
+
+
+// Resource
+$file = fopen('sample.txt', 'r');
+var_dump($file);
+echo '<br/>';
+
