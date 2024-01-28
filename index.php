@@ -1,31 +1,25 @@
 <?php
-    $firstName = 'John';
-    $lastName = 'Diaz';
-    $fullName = $firstName . ' ' .  $lastName;
 
-?>
+$number1 = 5;
+$number2 = 10;
+$number3 = '20';
+$fruit = 'apple';
+$bool1=true;
+$bool2=false;
+$null = null;
 
-<!DOCTYPE html>
-<html lang="en">
+// Implicit Conversion
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Learn PHP From Scratch</title>
-</head>
+$result = $number1 + $number2;
+$result = $number1 + $number2 + $number3;
+$result = $number3 . $fruit;
+$result = $number1 + $bool1;
+$result = $number1 + $bool2;
+$result = $number1 + $null;
 
-<body class="bg-gray-100">
-    <header class="bg-blue-500 text-white p-4">
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-semibold">Learn PHP From Scratch</h1>
-        </div>
-    </header>
-    <div class="container mx-auto p-4 mt-4">
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-2xl font-semibold mb-4"><?= 'Hello, my name is ' . $fullName . '<br/>' ?></h2>
-            <h2 class="text-2xl font-semibold mb-4"><?= "Hello, my name is $fullName </br>" ?></h2>
-    </div>
-</body>
+$result = (int) $number3;
+$result = (int) $bool1;
+$result = (string) $number1;
 
-</html>
+var_dump($result);
+echo ('<br/>');
