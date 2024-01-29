@@ -1,55 +1,19 @@
 <?php
 $output = null;
 
-$ids = [10, 22, 12, 43, 56];
-$users = ['user2', 'user1', 'user3'];
+$user = [
+    'name' => 'John',
+    'email' => 'john@gmail.com',
+    'password' => 'superpassword',
+    'hobbies' => ['going to the gym', 'playing a guitar', 'riding a bike']
+];
 
-$output = count($ids);
 
-// sort
-sort($ids); 
-sort($users); 
+$output = $user['name'];
 
-// rsort
-rsort($ids);
+$user['address'] = 'Kyiv';
 
-// array_push
-array_push($ids,500);
-array_push($users,'user4');
-
-// array_pop
-array_pop($ids);
-array_pop($users);
-
-// array_shift
-array_shift($ids);
-
-// array_unshift
-array_unshift($users, 'user5');
-
-// array_slice
-$ids2 = array_slice($ids, 2, 2);
-// var_dump($ids2)
-
-// array_splice
-// array_splice($ids, 1, 1, 'New id');
-
-// array_sum
-    $output = 'Sum of IDs: '. array_sum($ids);
-
-// array_search
-$output = 'User 2 is at index: ' . array_search('user2', $users);
-
-// explode
-$tags = 'tech, code, js, py, node.js';
-$tagsArr = explode(', ', $tags);
-// var_dump($tagsArr);
-
-//implode
-$output = implode(', ', $users);
-
-// in_array
-// $output = 'User 3 exists: ' . in_array('user3', $users);
+unset($user['address']);
 
 ?>
 
@@ -73,18 +37,13 @@ $output = implode(', ', $users);
         <div class="bg-white rounded-lg shadow-md p-6 mt-6">
             <!-- Output -->
             <p class="text-xl"><?= $output ?></p>
-            <h2 class="text-xl font-semibold my-4">Ids array:</h2>
+            <h2 class="text-xl font-semibold my-4">User:</h2>
             <p>
                 <pre>
-                    <?php print_r($ids) ?>
+                    <?php print_r($user) ?>
                 </pre>
             </p>
-            <h2 class="text-xl font-semibold my-4">Users array:</h2>
-            <p>
-                <pre>
-                    <?php print_r($users) ?>
-                </pre>
-            </p>
+           
         </div>
     </div>
 </body>
