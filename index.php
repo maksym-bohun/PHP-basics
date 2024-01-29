@@ -1,19 +1,23 @@
 <?php
 $output = null;
 
-$user = [
-    'name' => 'John',
-    'email' => 'john@gmail.com',
-    'password' => 'superpassword',
-    'hobbies' => ['going to the gym', 'playing a guitar', 'riding a bike']
+$fruits = [
+    ['Apple', 'Red'],
+    ['Orange', 'Orange'],
+    ['Banana', 'Yellow']
 ];
 
+$output = $fruits[0][0];
 
-$output = $user['name'];
+$fruits[] = ['Pie', 'Green'];
 
-$user['address'] = 'Kyiv';
+$users = [
+    ['name' => 'John', 'age' => 29, 'email' => 'john@gmail.com'],
+    ['name' => 'Maks', 'age' => 19, 'email' => 'maks@gmail.com'],
+    ['name' => 'Kate', 'age' => 15, 'email' => 'kate@gmail.com'],
+];
 
-unset($user['address']);
+$output = $users[1]['name'];
 
 ?>
 
@@ -40,7 +44,7 @@ unset($user['address']);
             <h2 class="text-xl font-semibold my-4">User:</h2>
             <p>
                 <pre>
-                    <?php print_r($user) ?>
+                    <?php print_r($users) ?>
                 </pre>
             </p>
            
