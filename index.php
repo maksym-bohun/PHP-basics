@@ -1,40 +1,43 @@
-<?php
+<?php 
 
-/*
-| Comparison Operators
-| Operator | Description              |
-| -------- | ------------------------ |
-| ==       | Equal to                 |
-| ===      | Identical to             |
-| !=       | Not equal to             |
-| <>       | Not equal to             |
-| !==      | Not identical to         |
-| <        | Less than                |
-| >        | Greater than             |
-| <=       | Less than or equal to    |
-| >=       | Greater than or equal to |
-*/
+$number = 1;
 
-$x = 10;
-$y = '10';
-
-// var_dump($x == $y);
-// var_dump($x === $y);
+// while($number <= 10){
+//     if($number % 2 == 0){
+//         echo $number . ' is odd </br>';
+//     } else{
+//         echo $number . ' is even </br>';
+//     }
+//     $number ++;
+// }
 
 
-/*
-| Logical Operators
-| Operator | Description            |
-| -------- | ---------------------- |
-| and      | True if both are true  |
-| &&       | True if both are true  |
-| or       | True if either is true |
-| ||       | True if either is true |
-| xor      | True if one is true    |
-| !        | True if it is not true |
-*/
+// Break
+// for($i = 1; $i <=10; $i++){
+//     if($i == 5){
+//         break;
+//     }
+//     echo $i . '</br>';
+// }
 
-$a = 20;
-$b = 30;
+// Skip and continue
 
-var_dump($a xor $b);
+// for($i = 1; $i <=10; $i++){
+//     if($i == 5){
+//         continue;
+//     }
+//     echo $i . '</br>';
+// }
+
+$studentGrades = array(
+    'John' => 75,
+    'Jack' => 92,
+    'Kate' => 100,
+    'Wilson' => 65
+);
+
+foreach($studentGrades as $name => $grade){
+    if($grade >= 90){
+        echo $name . ' has great grade! </br>';
+    }
+}
