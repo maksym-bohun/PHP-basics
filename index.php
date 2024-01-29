@@ -1,18 +1,20 @@
-<?php
-// Basic For Loop
+<?php 
 
-// for($i = 0; $i <= 10; $i++){
-//     echo $i . '<br/>';
+// for($i = 0; $i<5; $i++){
+//     for($j = 0; $j < 5; $j++){
+//         echo $i . ' - ' . $j . '</br>';
+//     }
 // }
+// $i = 0;
+// while($i < 5){
+//     $j = 0;
 
-// Basic While Loop
-$i = 0;
-while($i < 10){
-    echo $i . '<br/>';
-    $i++;
-}
-
-
+//     while($j < 5){
+//         echo $i . ' - ' . $j . '</br>';
+//         $j++;
+//     }
+//     $i++;
+// }
 
 ?>
 
@@ -20,36 +22,38 @@ while($i < 10){
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>PHP From Scratch</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested Loops & CSS Grid Example</title>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 50px);
+      /* Create 5 columns, each 50px wide */
+      grid-gap: 5px;
+      /* Add some spacing between grid items */
+    }
+
+    .grid-item {
+      width: 50px;
+      height: 50px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 50px;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-100">
-    <header class="bg-blue-500 text-white p-4">
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-semibold">PHP From Scratch</h1>
-        </div>
-    </header>
-    <div class="container mx-auto p-4 mt-4">
-        <div class="bg-white rounded-lg shadow-md p-6 mt-6">
-            <!-- Output -->
-
-            <!-- <ul>
-                <?php for($i=0; $i<=10; $i++):?>
-                    <li>Number:  <?= $i ?></li>
-                 <?php endfor; ?>
-            </ul> -->
-            <ul>
-                <?php 
-                $i = 0;
-                while($i< 10):?>
-                    <li>Number:  <?= $i ?></li>
-                 <?php $i++; endwhile; ?>
-            </ul>
-        </div>
-    </div>
+<body>
+  <div class="grid-container">
+    <?php for($i = 0; $i<5; $i++): ?>
+        <?php for($j = 0; $j<5; $j++): ?>
+            <div class="grid-item">
+                <?= $i . ' - '. $j ?>
+            </div>
+        <?php endfor ?>
+    <?php endfor ?>
+  </div>
 </body>
 
 </html>
