@@ -1,82 +1,49 @@
 <?php
-
-/*
-  Challenge 1: Create a multiplication table using a nested `for` loop. The table should look like this:
-
-1 x 1 = 1
-1 x 2 = 2
-1 x 3 = 3
-1 x 4 = 4
-1 x 5 = 5
-1 x 6 = 6
-1 x 7 = 7
-1 x 8 = 8
-1 x 9 = 9
-1 x 10 = 10
-2 x 1 = 2
-2 x 2 = 4
-2 x 3 = 6
-2 x 4 = 8
-... 
-10 x 10 = 100
-*/
-echo '<h3>Multiplication Table</h3>';
-
-for($i = 1; $i <=10; $i++){
-    for($j=1; $j<=10; $j++){
-        echo $i . ' * ' . $j . ' = ' . $i*$j . '</br>';
-    } 
-    echo '</br>';
-}
-
-/*
-  Challenge 2: Get the sum of the numbers in an array by using a foreach loop. For bonus points, also use a for loop.
-*/
-
-echo '<h3>Array Sum</h3>';
-
-$numbers = [1, 2, 3, 4, 5];
-
-$sum = 0;
-foreach($numbers as $number){
-    $sum += $number;
-}
-
-echo $sum;
-
-/*
-  Challenge 3: Calculate the average students grade from an array of students. Each student has their own array with the key 'grades'. 
-
-  	1. Create an array of students with their names and grades (0 - 100)
-	2. Iterate over the students array with a foreach loop
-	3. Calculate the average grade for each student
-*/
-
-echo '<h3>Average Grade</h3>';
-
-$students = [
-    ['name' => 'John', 'grades'=> [rand(0, 100), rand(0, 100), rand(0, 100), rand(0, 100)]],
-    ['name' => 'Maks', 'grades'=> [rand(0, 100), rand(0, 100), rand(0, 100), rand(0, 100)]],
-    ['name' => 'Tim', 'grades'=> [rand(0, 100), rand(0, 100), rand(0, 100), rand(0, 100)]],
-    ['name' => 'Antony', 'grades'=> [rand(0, 100), rand(0, 100), rand(0, 100), rand(0, 100)]]
-];
+$isLoggedIn = true;
+$name = 'Maks';
+?>
 
 
-foreach($students as $index => $student){
-    $sum = 0;
-    $count = 0;
-    foreach($student['grades'] as $grade){
-        $sum += $grade;
-        $count ++;
-    }
-    $students[$index]['avgGrade'] = $sum / $count;
-    var_dump($student);
-}
+<!DOCTYPE html>
+<html lang="en">
 
-echo '<pre>';
-print_r($students);
-echo '<pre/>';
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>PHP From Scratch</title>
+</head>
+
+<body class="bg-gray-100">
+  <header class="bg-blue-500 text-white p-4">
+    <div class="container mx-auto">
+      <h1 class="text-3xl font-semibold">PHP From Scratch</h1>
+    </div>
+  </header>
+  <div class="container mx-auto p-4 mt-4">
+    <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+      <!-- Output -->
+      <?php if($isLoggedIn): ?>
+        <?php if(isset($name)): ?>
+        <h1 class="text-3xl">Welcome <?= $name ?></h1>
+        <?php else: ?>
+            <h1 class="text-3xl">Welcome</h1>
+      <?php endif; ?>
+      <?php else: ?>
+      <h1 class="text-3xl">Please log in!</h1>
+      <?php endif; ?>
+
+      <?php if($isLoggedIn && $name): ?>
+        <h1 class="text-3xl">Welcome <?= $name ?></h1>
+      <?php elseif($isLoggedIn && !$name): ?>
+        <h1 class="text-3xl">Welcome to the app!</h1>
+      <?php else: ?>
+        <h1>Please log</h1>
+      <?php endif; ?>
 
 
+    </div>
+  </div>
+</body>
 
-
+</html>
