@@ -1,11 +1,31 @@
 <?php
-class MathUtility{
-    public static $pi = 3.14;
 
-    public static function add(...$nums){
-        return array_sum($nums);
+class Article{
+    public $title;
+    public $content;
+    private $published = false;
+
+    public function __construct($title, $content)
+    {
+        $this->title = $title;
+        $this->content = $content;
+    }
+
+    public function publish(){
+        $this->published = true;
+    }
+
+    public function isPublished(){
+        return $this->published;
     }
 }
 
-echo MathUtility::$pi;
-echo MathUtility::add(1, 2, 33);
+$article1 = new Article('Animals', 'Content about animals');
+$article2 = new Article('Cars', 'Content about cars');
+
+$article1->publish();
+
+var_dump($article1->isPublished());
+echo '</br>';
+var_dump($article2->isPublished());
+echo '</br>';
