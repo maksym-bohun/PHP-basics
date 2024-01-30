@@ -1,56 +1,78 @@
-<?php
-
-abstract class Shape{
-    protected $name;
-
-    // Abstract method
-
-    abstract public function calculateArea();
-
-    public function __construct($name)
-    {
-        $this->name = $name;
+<?php 
+    interface ContentInterface{
+        public function display();
+        public function edit();
     }
 
-    // Concrete method
-    public function getName(){
-        return $this->name;
-    }
-}
+    class Article implements ContentInterface{
+        private $title;
+        private $content;
 
-class Circle extends Shape{
-    private $radius;
+        public function __construct($title, $content)
+        {
+            $this->title = $title;
+            $this->content = $content;
+        }
 
-    public function __construct($name, $radius)
-    {   
-        parent::__construct($name);
-        $this->radius = $radius;
-    }
+        public function display(){
+            echo "<h2>$this->title</h2>";
+            echo "<p>$this->content</p>";
+        }
 
-    public function calculateArea(){
-        return pi() * pow($this->radius, 2);
-    }
-}
-
-class Rectangle extends Shape{
-    private $width;
-    private $height;
-
-    public function __construct($name, $width, $height)
-    {   
-        parent::__construct($name);
-        $this->width = $width;
-        $this->height = $height;
+        public function edit(){
+            echo "Editing the article '{$this->title}'";
+        }
     }
 
-    public function calculateArea(){
-        return $this->width * $this->height;
+    class Video implements ContentInterface{
+        private $title;
+        private $url;
+
+        public function __construct($title, $url)
+        {
+            $this->title = $title;
+            $this->url = $url;
+        }
+
+        public function display(){
+            echo "<iframe src='{$this->url}'></iframe>";
+        }
+
+        public function edit(){
+            echo "Editing the video '{$this->title}'";
+        }
     }
-}
 
-$circle = new Circle('Circle', 5);
-$rectangle = new Rectangle('Rectangle', 4, 10);
+    $article = new Article('Introduction to PHP', 'PHP is a versitile scripting language');
+    $video = new Video('Introduction to PHP', 'https://ua.udemy.com/course/php-from-scratch-course/learn/lecture/41057860#overview');
+?>
 
+<!DOCTYPE html>
+<html lang="en">
 
-echo $circle->getName() . ' area is ' .  $circle->calculateArea() . '</br>';
-echo $rectangle->getName() . ' area is ' .  $rectangle->calculateArea() . '</br>';
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>PHP From Scratch</title>
+</head>
+
+<body class="bg-gray-100">
+  <header class="bg-blue-500 text-white p-4">
+    <div class="container mx-auto">
+      <h1 class="text-3xl font-semibold">PHP From Scratch</h1>
+    </div>
+  </header>
+  <div class="container mx-auto p-4 mt-4">
+    <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+      <!-- Output -->
+      <?= $article->display()?>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+        <?= $video->display()?>
+    </div>
+
+  </div>
+</body>
+
+</html>
