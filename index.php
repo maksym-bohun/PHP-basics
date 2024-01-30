@@ -1,36 +1,47 @@
 <?php
 
-class User{
-    // Properties
-    public $name;
-    public $email;
+class User
+{
+  // Properties
+  public $name;
+  public $email;
+  private $status = 'active';
 
-    public function __construct($name, $email)
-    {
-        echo '</br>Constructor ran... </br>';
-        $this->$name = $name;
-        $this->email = $email;
-    }
+  public function __construct($name, $email)
+  {
+    $this->name = $name;
+    $this->email = $email;
+  }
 
-    // Methods
-    public function login(){
-        echo 'The user logged in';
-    }
+  // Methods
+  public function login()
+  {
+    echo $this->name . ' logged in <br>';
+    
+  }
+
+  // Getter
+  public function getStatus(){
+    echo  $this->status . '<br>'; 
+  }
+
+  // Setter
+  public function setStatus($status){
+    $this->status = $status;
+  }
 }
 
 // Instantiate a new object
-
-$user1 = new User('Maks Bohun', 'maks@gmail.com');
-
+$user1 = new User('John Doe', 'john@gmail.com');
 
 $user1->login();
 
+$user2 = new User('Jane Doe', 'jane@gmail.com');
 
-$user2 = new User('Dan Bohun', 'dan@gmail.com');
-// $user2->name = 'Dan Bohun';
-// $user2->email = 'dan@gmail.com';
+$user2->login();
 
+ $user2->getStatus();
+ $user2->setStatus('inactive');
+ $user2->getStatus();
 
-// echo '<pre>';
-// var_dump($user1);
-
+// var_dump($user2);
