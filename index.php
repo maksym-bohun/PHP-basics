@@ -22,7 +22,7 @@ $listings = [
     'description' => 'We are hiring an experienced accountant to handle financial transactions and ensure compliance.',
     'salary' => 55000,
     'location' => 'Chicago',
-    'tags' => ['Accounting', 'SEO','Bookkeeping', 'Financial Reporting']
+    'tags' => ['Accounting', 'Bookkeeping', 'Financial Reporting']
   ],
   [
     'id' => 4,
@@ -30,7 +30,7 @@ $listings = [
     'description' => 'We are seeking a talented UX designer to create intuitive and visually appealing user interfaces.',
     'salary' => 70000,
     'location' => 'Seattle',
-    'tags' => ['User Experience', 'Wireframing', 'SEO', 'Prototyping']
+    'tags' => ['User Experience', 'Wireframing', 'Prototyping', 'Web Development']
   ],
   [
     'id' => 5,
@@ -42,15 +42,25 @@ $listings = [
   ],
 ];
 
-function formatSalary(int $salary): string{
-   return '$' . number_format($salary, 0, '.', ',');
+function formatSalary($salary)
+{
+  return '$' . number_format($salary);
 }
 
-function highlightTags($tags, $searchTerm){
-    $tagsStr = implode(', ',$tags);
-    return str_replace($searchTerm, "<span class='bg-yellow-200 py-1 px-2 rounded-lg mr-1'>{$searchTerm}</span>", $tagsStr);
+function highlightTags($tags, $searchTerm)
+{
+  $tagsArray = implode(', ', $tags);
+  return str_replace($searchTerm, "<span class='bg-yellow-200'>$searchTerm</span>", $tagsArray);
 }
 
+function calculateAverageSalary ($jobListings){
+    $sum = 0;
+    $salariesCount = count($jobListings);
+    foreach($jobListings as $job){
+        $sum += $job['salary']; 
+    }
+    return $salariesCount > 0 ?  '$' . number_format(($sum / $salariesCount)) : 0;
+}
 ?>
 
 
@@ -71,6 +81,10 @@ function highlightTags($tags, $searchTerm){
     </div>
   </header>
   <div class="container mx-auto p-4 mt-4">
+    <div class="bg-green-100 rounded-lg shadow-md p-6 my-6">
+      <h2 class="text-2xl font-semibold mb-4">Average Salary: <?= calculateAverageSalary($listings) ?></h2>
+    </div>
+    <!-- Output -->
     <?php foreach ($listings as $index => $job) : ?>
       <div class="md my-4">
         <div class="rounded-lg shadow-md <?= $index % 2 === 0 ? 'bg-blue-100' : 'bg-white' ?>">
@@ -79,7 +93,7 @@ function highlightTags($tags, $searchTerm){
             <p class="text-gray-700 text-lg mt-2"><?= $job['description'] ?></p>
             <ul class="mt-4">
               <li class="mb-2">
-                <strong>Salary:</strong> <?= formatSalary($job['salary']) ?>
+                <strong>Salary:</strong> <?= formatSalary($job['salary']); ?>
               </li>
               <li class="mb-2">
                 <strong>Location:</strong> <?= $job['location'] ?>
@@ -88,7 +102,7 @@ function highlightTags($tags, $searchTerm){
               </li>
               <?php if (!empty($job['tags'])) : ?>
                 <li class="mb-2">
-                  <strong>Tags:</strong> <?= highlightTags($job['tags'], 'SEO')?>
+                  <strong>Tags:</strong> <?= highlightTags($job['tags'], 'SEO') ?>
                 </li>
               <?php endif; ?>
             </ul>
