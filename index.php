@@ -1,12 +1,21 @@
 <?php
 
-function sayHello(){
-    echo 'Hello';
+// Global scope
+$name = 'Alice';
+
+function sayHello (){
+    global $name;
+
+    // Loval scope
+    $name = 'Bob';
+    echo'Hello '. $name;
 }
+
 
 function sayGoodbye(){
-    return 'Goodbye';
+    $names = ['Jack', 'Jill'];
+    echo 'Goodbye, ' . $names[0];
 }
 
-sayHello();
-echo sayGoodbye();
+sayGoodbye();
+
