@@ -1,22 +1,23 @@
 <?php
 
-$square =  function ($number) {
+$numbers =[1,2,3,4,5];
+
+$square = function($number){
     return $number * $number;
 };
 
-$result = $square(10);
+$squaredNumbers = array_map($square, $numbers);
 
-// echo $result;
+// print_r($squaredNumbers);
 
-// Closures
-
-function createCounter(){
-    $count = 0;
-    $counter = function() use (&$count){
-        return ++$count;;
-    };
-    return $counter;
+function applyCallback($callback, $value){
+    return $callback($value);
 }
 
-$counter = createCounter();
-echo $counter();
+$double = function($number){
+    return $number * 2;
+};
+
+$res = applyCallback($double, 4);
+
+echo $res;
