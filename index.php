@@ -1,31 +1,56 @@
 <?php
 
-class Article{
-    public $title;
-    public $content;
-    private $published = false;
+abstract class Shape{
+    protected $name;
 
-    public function __construct($title, $content)
+    // Abstract method
+
+    abstract public function calculateArea();
+
+    public function __construct($name)
     {
-        $this->title = $title;
-        $this->content = $content;
+        $this->name = $name;
     }
 
-    public function publish(){
-        $this->published = true;
-    }
-
-    public function isPublished(){
-        return $this->published;
+    // Concrete method
+    public function getName(){
+        return $this->name;
     }
 }
 
-$article1 = new Article('Animals', 'Content about animals');
-$article2 = new Article('Cars', 'Content about cars');
+class Circle extends Shape{
+    private $radius;
 
-$article1->publish();
+    public function __construct($name, $radius)
+    {   
+        parent::__construct($name);
+        $this->radius = $radius;
+    }
 
-var_dump($article1->isPublished());
-echo '</br>';
-var_dump($article2->isPublished());
-echo '</br>';
+    public function calculateArea(){
+        return pi() * pow($this->radius, 2);
+    }
+}
+
+class Rectangle extends Shape{
+    private $width;
+    private $height;
+
+    public function __construct($name, $width, $height)
+    {   
+        parent::__construct($name);
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public function calculateArea(){
+        return $this->width * $this->height;
+    }
+}
+
+$circle = new Circle('Circle', 5);
+$rectangle = new Rectangle('Rectangle', 4, 10);
+
+
+echo $circle->getName() . ' area is ' .  $circle->calculateArea() . '</br>';
+echo $rectangle->getName() . ' area is ' .  $rectangle->calculateArea() . '</br>';
