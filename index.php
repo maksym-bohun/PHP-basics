@@ -1,23 +1,14 @@
-<?php
+<?php 
 
-$numbers =[1,2,3,4,5];
+// function add($a, $b){
+//     return $a + $b;
+// }
 
-$square = function($number){
-    return $number * $number;
-};
 
-$squaredNumbers = array_map($square, $numbers);
+$add = fn($a, $b) => $a + $b;
 
-// print_r($squaredNumbers);
+echo $add(1, 4);
 
-function applyCallback($callback, $value){
-    return $callback($value);
-}
+$numbers = [1,2,3,4,5];
 
-$double = function($number){
-    return $number * 2;
-};
-
-$res = applyCallback($double, 4);
-
-echo $res;
+$squaredNumbers = array_map(fn($number)=>$number * $number, $numbers);
