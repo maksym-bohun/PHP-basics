@@ -1,21 +1,15 @@
-<?php
+<?php 
 
-// Global scope
-$name = 'Alice';
+declare(strict_types = 1);
 
-function sayHello (){
-    global $name;
-
-    // Loval scope
-    $name = 'Bob';
-    echo'Hello '. $name;
+function getSum(int $a, int $b):int{
+    return $a + $b;
 }
 
+echo getSum(1, 2);
 
-function sayGoodbye(){
-    $names = ['Jack', 'Jill'];
-    echo 'Goodbye, ' . $names[0];
+function greeting(string $name): void{
+    echo 'Hello, ' . $name;
 }
 
-sayGoodbye();
-
+greeting('Maks');
