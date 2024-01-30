@@ -1,53 +1,36 @@
 <?php
-/*
-  Challenge 1: Fahrenheit to Celsius
-  Create a function called `fahrenheitToCelsius` that takes a Fahrenheit temperature as an argument. Return the temperature converted to Celsius.
 
-  The formula to convert Fahrenheit to Celsius is: Celsius = (Fahrenheit - 32) * 5/9
-*/
+class User{
+    // Properties
+    public $name;
+    public $email;
 
-function fahrenheitToCelsius ( $fahrenheitTemp){
-    return ($fahrenheitTemp - 32) * (5/9);
-}
+    public function __construct($name, $email)
+    {
+        echo '</br>Constructor ran... </br>';
+        $this->$name = $name;
+        $this->email = $email;
+    }
 
-echo '<br>';
-echo fahrenheitToCelsius(40);
-
-/*
-  Challenge 2: Print names in uppercase
-  Create a function called `printNamesToUpperCase` that takes an array of names as an argument. The function should loop through the array and print each name to the screen in uppercase letters.
-*/
-
-function printNamesToUpperCase ($names){
-    foreach($names as $name){
-        echo strtoupper($name). ', ';
+    // Methods
+    public function login(){
+        echo 'The user logged in';
     }
 }
 
-echo '<br>';
-printNamesToUpperCase(['Maks', 'tom']);
+// Instantiate a new object
 
-/*
-  Challenge 3: Find the longest word
-  1. Create a function called `findLongestWord` that takes a sentence as an argument.
-  2. The function should return the longest word in the sentence.
-  3. The output should look like this:
-*/
+$user1 = new User('Maks Bohun', 'maks@gmail.com');
 
-function findLongestWord ($sentence){
-    $words = explode(' ',  trim($sentence));
-    $lettersInWords = [];
-    echo '</br> <pre>';
-    var_dump($words);
-    echo '</br></pre>';
 
-    foreach($words as $word){
-      array_push($lettersInWords, strlen($word));
-    }
+$user1->login();
 
-    // $longestWordIndex = $lettersInWords[max($lettersInWords)];
-    $indexOfShortestWord = array_search(max($lettersInWords), $lettersInWords);
-    echo 'Longest word:  ' . $words[$indexOfShortestWord]; 
-}
 
-findLongestWord('Hello my name is Maksym');
+$user2 = new User('Dan Bohun', 'dan@gmail.com');
+// $user2->name = 'Dan Bohun';
+// $user2->email = 'dan@gmail.com';
+
+
+// echo '<pre>';
+// var_dump($user1);
+
