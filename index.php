@@ -1,11 +1,17 @@
 <?php
+setcookie('username', 'jdoe', time()+3600, '/');
+?>
 
-session_start();
 
-$_SESSION['name'] = 'John';
-if(isset($_SESSION['name'])){
-    echo 'Name: '.$_SESSION['name']; 
-}
-else{
-    echo 'Name is not set!';
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>PHP Cookies</title>
+</head>
+
+<body>
+  <p>Cookie set. <a href="page.php">Go to page.php</a></p>
+</body>
+
+</html>
