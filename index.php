@@ -2,11 +2,20 @@
 $title = '';
 $description = '';
 $submitted = false; 
+$messages= [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   $title = htmlspecialchars($_POST['title'] ?? '');
   $description = htmlspecialchars($_POST['description'] ?? '');
 
+    if(empty($title)){
+        $messages[] = ['text' => 'Title is required', 'color' => 'text-red-500'];
+        $submitted = false;
+    } 
+    if(empty($description)){
+        $messages[] = ['text' => 'Description is required', 'color' => 'text-red-500'];
+        $submitted = false;
+    } 
  
     $file = $_FILES['logo'];
 
@@ -31,19 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         if(in_array($fileExtension, $allowedExtensions)){
              // Upload file
         if(move_uploaded_file($file['tmp_name'], $uploadDir . $filename)){
-            echo '</br>file uploaded</br>';
+            $messages[] = ['text' => 'File uploaded successfully', 'color'=> 'text-green-500'];
+            $submitted = true;
         }else{
-            echo '</br>file upload error: ' . $file['error'];
-            
+            $messages[] = ['text' => 'File upload error.', 'color'=> 'text-red-500'];
         }
         }else{
-            echo 'Invalid File type';
+            $messages[] = ['text' => 'File must be an image.', 'color'=> 'text-red-500'];
         }
 
        
     }
 
-  $submitted = true;
 }
 ?>
 
@@ -61,6 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   <div class="flex justify-center items-center h-screen">
     <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
       <h1 class="text-2xl font-semibold mb-6">Create Job Listing</h1>
+      <?php foreach($messages as $message): ?>
+        <p class="<?= $message['color'] ?> mb-2">
+        <?= $message['text'] ?>
+    </p>
+        <?php endforeach ?>
       <form method="post" enctype="multipart/form-data">
         <div class="mb-4">
           <label for="title" class="block text-gray-700 font-medium">Title</label>
